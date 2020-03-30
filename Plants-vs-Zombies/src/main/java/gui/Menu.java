@@ -4,17 +4,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
-
 import javax.swing.JButton;
 import javax.swing.JPanel;
-
 import javax.imageio.ImageIO;
 
 public class Menu extends JPanel implements ActionListener{
 	
+	private static final long serialVersionUID = 1L;
 	public static final int H_PRZYCISK = 300;
 	public static final int W_PRZYCISK = 300;
 	private JButton start;
@@ -27,10 +24,7 @@ public class Menu extends JPanel implements ActionListener{
 		super();	
 		okna = panel;
 		try {
-				menu = ImageIO.read(new File(getClass().getResource("menu.jpg").toURI()));
-		} catch (URISyntaxException er) {
-			System.err.println("Nie znaleziono obrazka.");
-			er.printStackTrace();
+			menu = ImageIO.read(getClass().getResourceAsStream("menu.jpg"));
 		} catch (IOException error) {
 			System.err.println("Nie znaleziono obrazka.");
 			error.printStackTrace();

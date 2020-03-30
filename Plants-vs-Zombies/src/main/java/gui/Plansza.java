@@ -4,16 +4,15 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
-
 import javax.imageio.ImageIO;
 
 public class Plansza extends JPanel implements ActionListener{
+
+	private static final long serialVersionUID = 1L;
 	public static final int H_PRZYCISK = 300;
 	public static final int W_PRZYCISK = 300;
 	private JButton powrot;
@@ -24,10 +23,7 @@ public class Plansza extends JPanel implements ActionListener{
 		super();
 		okna = panel;
 		try {
-				plansza = ImageIO.read(new File(getClass().getResource("plansza.jpg").toURI()));
-		} catch (URISyntaxException er) {
-			System.err.println("Nie znaleziono obrazka.");
-			er.printStackTrace();
+			plansza = ImageIO.read(getClass().getResourceAsStream("plansza.jpg"));
 		} catch (IOException error) {
 			System.err.println("Nie znaleziono obrazka.");
 			error.printStackTrace();
