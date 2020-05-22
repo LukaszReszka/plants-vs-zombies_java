@@ -28,7 +28,7 @@ public class Core extends StateBasedGame {
         game.setDisplayMode(WIDTH, HEIGHT, false);
         game.setTargetFrameRate(FPS);
         game.setShowFPS(false);
-        game.setIcon("ikona.png");
+        game.setIcon("icon.png");
         game.start();
 	}
 
