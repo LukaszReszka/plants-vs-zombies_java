@@ -13,14 +13,45 @@ class Lawn {
 	private PieceOfLawn[][] pieces_tab;
 	private Image choosing_pic;
 	private PieceOfLawn chosen_piece;
+	private boolean isChosenSelected;
 	
 	public Lawn () throws SlickException {
 		pieces_tab = new PieceOfLawn[LAWN_ROWS][LAWN_COLUMNS];
 		setPiecesProperties();
 		choosing_pic = new Image("chosen_piece.png");
+		isChosenSelected = false;
 	}
 	
-	public void findChosenPiece (int mouse_x, int mouse_y)
+	public void update(int mouse_x, int mouse_y, int delta) {
+		findChosenPiece(mouse_x, mouse_y);
+		if (chosen_piece == null || chosen_piece.getIsOccupied())
+			isChosenSelected = false;
+		else
+			isChosenSelected = true;
+		
+		for (PieceOfLawn[] row: pieces_tab)
+			for (PieceOfLawn piece: row)
+				piece.update(delta);
+	}
+	
+	public void drawPlacedHeroes () {
+		for (PieceOfLawn[] row: pieces_tab)
+			for (PieceOfLawn piece: row)
+				piece.draw();
+	}
+	
+	public void cleanBoard () {
+		for (PieceOfLawn[] row: pieces_tab)
+			for (PieceOfLawn piece: row)
+				piece.removeHero();
+	}
+	
+	public void putHeroOnBoard (int size_x, int size_y, String path) throws SlickException {
+		if(isChosenSelected)
+			chosen_piece.placeHero(size_x, size_y, path);
+	}
+	
+	private void findChosenPiece (int mouse_x, int mouse_y)
 	{
 		chosen_piece = null;
 		if ((mouse_x < 180 || mouse_y < 60 || mouse_x > 700 || mouse_y > 405))
@@ -33,7 +64,7 @@ class Lawn {
 	}
 	
 	public void markChosenPiece () {
-		if(chosen_piece != null)
+		if(isChosenSelected)
 			choosing_pic.draw(chosen_piece.getChoosingX(), chosen_piece.getChoosingY());
 	}
 	

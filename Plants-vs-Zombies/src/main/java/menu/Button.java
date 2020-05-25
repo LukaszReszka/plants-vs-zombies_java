@@ -4,23 +4,24 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 public class Button {
-
-	public static final int BUTTON_HEIGHT = 50;
-	public static final int BUTTON_WIDTH = 200;
 	
-	private int button_x;
-	private int button_y;
+	protected int button_x;
+	protected int button_y;
+	private int size_x;
+	private int size_y;
 	private Image button;
 	
-	public Button (int pos_x, int pos_y, String path) throws SlickException {
+	public Button (int pos_x, int pos_y, int asize_x, int asize_y, String path) throws SlickException {
 		button_x = pos_x;
 		button_y = pos_y;
+		size_x = asize_x;
+		size_y = asize_y;
 		button = new Image(path);
 	}
 	
 	public boolean isButtonPressed(int mouse_x, int mouse_y) {
-		if (mouse_x < button_x || mouse_y < button_y || mouse_x > (button_x + BUTTON_WIDTH)
-				|| mouse_y > (button_y + BUTTON_HEIGHT))
+		if (mouse_x < button_x || mouse_y < button_y || mouse_x > (button_x + size_x)
+				|| mouse_y > (button_y + size_y))
 			return false;
 		return true;
 	}

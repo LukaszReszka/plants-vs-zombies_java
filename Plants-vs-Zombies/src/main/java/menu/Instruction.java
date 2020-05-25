@@ -22,7 +22,7 @@ public class Instruction extends BasicGameState {
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
 		background = new Image("instruction.png");
 		mouse = container.getInput();
-		back = new Button(BACK_X, BACK_Y,"button_return.png");
+		back = new Button(BACK_X, BACK_Y, Menu.BUTTON_WIDTH, Menu.BUTTON_HEIGHT,"button_return.png");
 	}
 
 	@Override

@@ -15,7 +15,9 @@ public class Menu extends BasicGameState {
 	public static final int START_X = 100;
 	public static final int INSTRUCTION_X = 400;
 	public static final int QUIT_X = 700;
-	
+	public static final int BUTTON_HEIGHT = 50;
+	public static final int BUTTON_WIDTH = 200;
+
 	private Image background;
 	private Music music;
 	private Button start;
@@ -29,9 +31,9 @@ public class Menu extends BasicGameState {
 		container.setMouseCursor("cursor.png", 24, 24);
 		mouse = container.getInput();
 		background = new Image("menu.jpg");
-		start = new Button(START_X, BUTTONS_Y,"button_start.png");
-		instruction = new Button(INSTRUCTION_X, BUTTONS_Y,"button_instruction.png");
-		quit = new Button(QUIT_X, BUTTONS_Y,"button_quit.png");
+		start = new Button(START_X, BUTTONS_Y, BUTTON_WIDTH, BUTTON_HEIGHT,"button_start.png");
+		instruction = new Button(INSTRUCTION_X, BUTTONS_Y, BUTTON_WIDTH, BUTTON_HEIGHT, "button_instruction.png");
+		quit = new Button(QUIT_X, BUTTONS_Y, BUTTON_WIDTH, BUTTON_HEIGHT,"button_quit.png");
 		music = new Music("menu.wav");
 		music.loop();
 	}
