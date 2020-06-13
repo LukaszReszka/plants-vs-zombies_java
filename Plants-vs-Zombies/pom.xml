@@ -14,7 +14,7 @@
     </properties>
     
     <build>
-        <plugins>
+        <plugins>			
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -26,7 +26,7 @@
           			<executable>${JAVA_1_4_HOME}/bin/javac</executable>
                 </configuration>
             </plugin>
-            <plugin>
+                   <plugin>
                 <groupId>com.googlecode.mavennatives</groupId>
                 <artifactId>maven-nativedependencies-plugin</artifactId>
                 <version>0.0.6</version>
@@ -41,6 +41,7 @@
                     </execution>
                 </executions>
             </plugin>
+
         </plugins>
         </build>
         
