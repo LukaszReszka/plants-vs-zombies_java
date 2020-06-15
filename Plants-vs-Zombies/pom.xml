@@ -1,0 +1,54 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>pl.lreszka</groupId>
+  <artifactId>Plants-vs-Zombies</artifactId>
+  <version>0.0.5</version>
+  <packaging>jar</packaging>
+
+ <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <exec.mainClass>core.Core</exec.mainClass>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <verbose>true</verbose>
+          			<fork>true</fork>
+          			<executable>${JAVA_1_4_HOME}/bin/javac</executable>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.googlecode.mavennatives</groupId>
+                <artifactId>maven-nativedependencies-plugin</artifactId>
+                <version>0.0.6</version>
+                <executions>
+                    <execution>
+                        <id>unpacknatives</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <!--suppress MavenModelInspection (this line is for IDEA)-->
+                            <goal>copy</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        </build>
+        
+    <dependencies>
+    	<dependency>
+    		<groupId>org.slick2d</groupId>
+    		<artifactId>slick2d-core</artifactId>
+    		<version>1.0.2</version>
+    	</dependency>
+    </dependencies>
+</project>
