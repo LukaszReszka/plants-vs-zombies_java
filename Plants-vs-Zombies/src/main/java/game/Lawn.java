@@ -46,9 +46,9 @@ class Lawn {
 				piece.removeHero();
 	}
 	
-	public void putHeroOnBoard (int size_x, int size_y, String path) throws SlickException {
+	public void putHeroOnBoard (int size_x, int size_y, String path, SunCounter sun_counter, int price) throws SlickException {
 		if(isChosenSelected)
-			chosen_piece.placeHero(size_x, size_y, path);
+			chosen_piece.placeHero(size_x, size_y, path, sun_counter, price);
 	}
 	
 	private void findChosenPiece (int mouse_x, int mouse_y)

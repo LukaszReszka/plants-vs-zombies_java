@@ -33,12 +33,12 @@ class PieceOfLawn {
 	if (isOccupied)
 		hero.drawHero(hero_x, hero_y);
 	}
-	
-	public void placeHero(int size_x, int size_y, String path) throws SlickException {
+	public void placeHero(int size_x, int size_y, String path, SunCounter sun_counter, int price) throws SlickException {
 		if (!isOccupied)
 		{
 			hero = new Hero(size_x, size_y, path);
 			isOccupied = true;
+			sun_counter.removeSuns(price);
 		}
 	}
 	

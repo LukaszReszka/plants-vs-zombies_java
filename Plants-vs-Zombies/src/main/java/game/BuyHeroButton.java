@@ -16,10 +16,11 @@ class BuyHeroButton {
 	private boolean canPayFor = true;
 	private boolean isPlacingHero;
 	private int hero_size_x, hero_size_y;
+	private int price;
 	
 	
 	public BuyHeroButton(int apos_x, int apos_y, char ahero_type, String active_path, String inactive_path, String placing_path, 
-			String animation_path) throws SlickException {
+			String animation_path, int aprice) throws SlickException {
 		active_button = new Button(apos_x, apos_y, BUTTON_X_Y, BUTTON_X_Y, active_path);
 		inactive_button = new Button(apos_x, apos_y, BUTTON_X_Y, BUTTON_X_Y, inactive_path);
 		hero_type = ahero_type;
@@ -27,10 +28,12 @@ class BuyHeroButton {
 		isPlacingHero = false;
 		basic_animation_path = animation_path;
 		setHeroSizes();
+		price = aprice;
 	}
 	
 	public void update (int mouse_x, int mouse_y, boolean isLeftMouseButtonPressed, boolean isLeftMouseButtonDown,
-						Lawn board) throws SlickException {
+						Lawn board, SunCounter sun_counter) throws SlickException {
+		canPayFor = sun_counter.areEnoughSuns(price);
 		if (canPayFor)
 		{
 			if (!isPlacingHero)
@@ -41,7 +44,7 @@ class BuyHeroButton {
 			else if (!isLeftMouseButtonDown)
 			{
 				isPlacingHero = false;
-				board.putHeroOnBoard(hero_size_x, hero_size_y, basic_animation_path);
+				board.putHeroOnBoard(hero_size_x, hero_size_y, basic_animation_path, sun_counter, price);
 			}
 		}
 	}
