@@ -7,4 +7,5 @@ Osiągnięte postępy:
 - zaimplementowana obsługa menu,
 - zaimplementowany mechanizm umieszczania postaci na planszy gry,
 - animowane modele postaci,
+- licznik słoneczek i spadające słoneczka,
 - muzyka w tle i specjalny wygląd kursora.
